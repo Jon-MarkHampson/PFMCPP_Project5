@@ -115,18 +115,18 @@ CoffeeShop::CoffeeShop() : numChairs(54), numStaff(7), numToilets(2)
     std::cout << "\nCoffeeShop being constructed!" << std::endl;
 }
 CoffeeShop::~CoffeeShop()
-    {
+{
     std::cout << "\nCoffeeShop being destructed!" << std::endl;
-    }
+}
 
 CoffeeShop::Employee::Employee() : employeeID(12345), fullyTrained(false), salary(30000.00f), deliveryDistTravelled(0.f), deliveryNumCustomers(0)
 {
     std::cout << "\nEmployee being constructed!" << std::endl;
 }
 CoffeeShop::Employee::~Employee()
-    {
+{
     std::cout << "\nEmployee being destructed!" << std::endl;
-    }
+}
 
 void CoffeeShop::Employee::makeDeliveries(float distTravelled, int numCustomers)
 {
@@ -363,11 +363,11 @@ struct Farm
 
 Farm::Farm() : annualProfit(679000.78f), annualExpenses(0), cropYield (76543.21), farmLandAreaInHectare (84.3)
 {
-       std::cout << "\nFarm being constructed!" << std::endl;
+   std::cout << "\nFarm being constructed!" << std::endl;
 }
 Farm::~Farm()
 {
-       std::cout << "\nFarm being destructed!" << std::endl;
+   std::cout << "\nFarm being destructed!" << std::endl;
 }
 
 float Farm::sellSheep(float priceOfSheep)
@@ -424,11 +424,11 @@ struct Town
 
 Town::Town()
 {
-       std::cout << "\nTown being contructed!" << std::endl;
+   std::cout << "\nTown being contructed!" << std::endl;
 }
 Town::~Town()
 {
-       std::cout << "\nTown being destructed!" << std::endl;
+   std::cout << "\nTown being destructed!" << std::endl;
 }
 
 float Town::collectTaxes(float taxRate)
@@ -474,11 +474,11 @@ struct Airport
 
 Airport::Airport()
 {
-       std::cout << "\nAirport being constructed!" << std::endl;
+    std::cout << "\nAirport being constructed!" << std::endl;
 }
 Airport::~Airport()
 {
-       std::cout << "\nAirport being destructed!" << std::endl;
+    std::cout << "\nAirport being destructed!" << std::endl;
 }
 
 int Airport::collectGroundRent()
@@ -519,7 +519,7 @@ int main()
 {
     std::cout << "good to go!" << std::endl;
 
-        CoffeeShop coffeeShop;
+    CoffeeShop coffeeShop;
     coffeeShop.chargeCustomer(3, "Jennifer Aniston");
     std::cout << "Each coffee cost £" << coffeeShop.priceCoffee << std::endl;
 
