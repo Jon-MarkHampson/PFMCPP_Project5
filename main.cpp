@@ -139,6 +139,7 @@ void CoffeeShop::Employee::makeDeliveries(float distTravelled, int numCustomers)
     std::cout << "Employee number: " << employeeID << " made some deliveries. Number of kilometers per customer: " << aveDistancePerCustomer << " km" << std::endl;
     deliveryDistTravelled = distTravelled;
     deliveryNumCustomers = numCustomers;
+    std::cout << "Employee " << this->firstName << " " << this->lastName << " made deliveries to " << this->deliveryNumCustomers << " customers over " << this->deliveryDistTravelled << " km" << std::endl;
 }
 
 void CoffeeShop::Employee::takeHoliday(int startDate, int endDate)
@@ -178,7 +179,8 @@ void CoffeeShop::Employee::takeOutTrash(int bagsOfTrash, int numBagsEmployeeCanC
 float CoffeeShop::hostLocalArtistOnWalls(float percenatgeCommissionAgreed, float totalArtSales, std::string name)
 {
     float commissionTotal = percenatgeCommissionAgreed * totalArtSales;
-    std::cout << name << " commission total: £" << commissionTotal << std::endl; 
+    std::cout << name << " commission total: £" << commissionTotal << std::endl;
+    std::cout << "This has added funds to the total coffeeShop annual profit, which is now £" << this->annualProfit  << std::endl;
     return commissionTotal;
 }
 
@@ -186,6 +188,7 @@ float CoffeeShop::chargeCustomer(int numberOfCoffees, std::string customerName)
 {
     float saleTotal = priceCoffee * numberOfCoffees;
     std::cout << customerName << " paid £" << saleTotal << std::endl;
+    std::cout << "Each coffee from coffeeShop cost £" << this->priceCoffee << std::endl;
     return saleTotal;
 }
 
@@ -279,6 +282,7 @@ bool CommercialAeroplane::Cockpit::groundProximityWarningAlarm(bool nearGround, 
     {
         groundProximityalarmStateOn = true;
         std::cout << "Warning! Pull Up! Warning! Pull Up!" << std::endl;
+        std::cout << "The cockpit is within " << this->proximityWarningThreshold << " metres of the ground!" << std::endl;
     }
     else
     {
@@ -387,7 +391,7 @@ double Farm::harvestCrop(bool isCropMature, int numFarmHands, bool machinesFuele
     if (isCropMature && machinesFueled)
     {
         cropYield = farmLandAreaInHectare * numFarmHands;
-        return priceOfCrop * cropYield; 
+        return priceOfCrop * cropYield;
     }
     return 0;
 }
@@ -399,6 +403,7 @@ void Farm::constructNewBarn(bool needNewBarn, float newConstructionBudget)
     {
         annualExpenses = newConstructionBudget;
         annualProfit -= newConstructionBudget;
+        std::cout << "This farm has spent £" << this->annualExpenses << " this year. It's remaining profit is £" << this->annualProfit <<  "." << std::endl;
     }
     
 }
@@ -544,7 +549,6 @@ int main()
 
     Farm farm;
     farm.sellSheep(12.11f);
-
     std::cout << "The farm made income of £" << farm.harvestCrop(true, 4, true, 1.30) << " from this years harvest." << std::endl; 
     farm.constructNewBarn(true, 12345.45f);
     std::cout << "The farm has spent £" << farm.annualExpenses << " this year. It's remaining profit is £" << farm.annualProfit <<  "." << std::endl;
