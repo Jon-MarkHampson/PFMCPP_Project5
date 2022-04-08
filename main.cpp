@@ -108,17 +108,17 @@
          Employee();
          ~Employee();
 
-         void printEmployeeDeliveries();
-         void makeDeliveries(float distTravelled, int numCustomers);
-         void takeHoliday(int startDate, int endDate);
+         void printEmployeeDeliveries() const;
+         void makeDeliveries(const float distTravelled, const int numCustomers);
+         void takeHoliday(const int startDate,const int endDate) const;
          bool deservesPromotion();
-         void takeOutTrash(int bagsOfTrash, int numBagsEmployeeCanCarry);
+         void takeOutTrash(const int bagsOfTrash, const int numBagsEmployeeCanCarry) const;
      };
 
-     void printIncomeFromArt();
-     float hostLocalArtistOnWalls(float percenatgeCommissionAgreed, float totalArtSales, std::string name);
-     float chargeCustomer(int numberOfCoffees, std::string customerName);
-     bool trainStaff(Employee employee, std::string trainingRequired);
+     void printIncomeFromArt() const;
+     float hostLocalArtistOnWalls(float percenatgeCommissionAgreed, float totalArtSales, std::string name) const;
+     float chargeCustomer(const int numberOfCoffees, const std::string customerName) const;
+     bool trainStaff(Employee& employee, const std::string trainingRequired) const;
      float addDailyTakingsToAnnualProfit(int numCoffeesSold, float totalFromAdditionalSales);
      JUCE_LEAK_DETECTOR(CoffeeShop)
  };
@@ -140,11 +140,11 @@
  {
      std::cout << "\nEmployee being destructed!" << std::endl;
  }
- void CoffeeShop::Employee::printEmployeeDeliveries()
+ void CoffeeShop::Employee::printEmployeeDeliveries() const
  {
      std::cout << this->firstName << " " << this->lastName << " made deliveries to " << this->deliveryNumCustomers << " customers over " << this->deliveryDistTravelled << " km" <<     std::endl;
  }
- void CoffeeShop::Employee::makeDeliveries(float distTravelled, int numCustomers)
+ void CoffeeShop::Employee::makeDeliveries(const float distTravelled, const int numCustomers)
  {
      float aveDistancePerCustomer = distTravelled / numCustomers;
      std::cout << "Employee number: " << employeeID << " made some deliveries. Number of kilometers per customer: " << aveDistancePerCustomer << " km" << std::endl;
@@ -152,7 +152,7 @@
      deliveryNumCustomers = numCustomers;
  }
 
- void CoffeeShop::Employee::takeHoliday(int startDate, int endDate)
+ void CoffeeShop::Employee::takeHoliday(const int startDate, const int endDate) const
  {
      int numDaysHolidayTaken = endDate - startDate;
      std::cout << numDaysHolidayTaken << " days holiday taken by " << firstName << " " << lastName << std::endl;
@@ -169,7 +169,7 @@
      return false;
  }
 
- void CoffeeShop::Employee::takeOutTrash(int bagsOfTrash, int numBagsEmployeeCanCarry)
+ void CoffeeShop::Employee::takeOutTrash(const int bagsOfTrash, const int numBagsEmployeeCanCarry) const
  {
      int numOfTripsToDumpster = 0;
      for (int i = 0; i < bagsOfTrash/numBagsEmployeeCanCarry; ++i)
@@ -185,19 +185,19 @@
      std::cout << firstName << " " << lastName << " made a total of " << numOfTripsToDumpster << " trips to the dumpster" << std::endl;
 
  }
- void CoffeeShop::printIncomeFromArt()
+ void CoffeeShop::printIncomeFromArt() const
  {
      std::cout << "This has added funds to the total annual profit, which is now £" << this->annualProfit  << std::endl;
  }
 
- float CoffeeShop::hostLocalArtistOnWalls(float percenatgeCommissionAgreed, float totalArtSales, std::string name)
+ float CoffeeShop::hostLocalArtistOnWalls(const float percenatgeCommissionAgreed, const float totalArtSales, const std::string name) const
  {
      float commissionTotal = percenatgeCommissionAgreed * totalArtSales;
      std::cout << name << " commission total: £" << commissionTotal << std::endl;
      return commissionTotal;
  }
 
- float CoffeeShop::chargeCustomer(int numberOfCoffees, std::string customerName)
+ float CoffeeShop::chargeCustomer(const int numberOfCoffees, const std::string customerName) const
  {
      float saleTotal = priceCoffee * numberOfCoffees;
      std::cout << customerName << " paid £" << saleTotal << std::endl;
@@ -205,13 +205,13 @@
      return saleTotal;
  }
 
- bool CoffeeShop::trainStaff(Employee employee, std::string trainingRequired)
+ bool CoffeeShop::trainStaff(Employee& employee, std::string trainingRequired) const
  {
      std::cout << employee.firstName << " " << employee.lastName << " has been trained on " << trainingRequired << std::endl;
      return true;
  }
 
- float CoffeeShop::addDailyTakingsToAnnualProfit(int numCoffeesSold, float totalFromAdditionalSales)
+ float CoffeeShop::addDailyTakingsToAnnualProfit(const int numCoffeesSold, const float totalFromAdditionalSales)
  {
      float dailySalesTotal {0};
      for (int i = 0; i < numCoffeesSold; ++i)
@@ -265,17 +265,17 @@
          Cockpit();
          ~Cockpit();
 
-         void printProximityAlarm();
-         float increaseAirSpeed(float deltaV, float currentAirSpeed);
-         bool groundProximityWarningAlarm(bool nearGround, float proximityWarningThreshold);
-         bool autopilotDisengagement(bool pilotAndCopilotChecklistComplete);
-         void increaseAltitude(float requireAltitude);
+         void printProximityAlarm() const;
+         float increaseAirSpeed(const float deltaV, const float currentAirSpeed) const;
+         bool groundProximityWarningAlarm(const bool nearGround, const float proximityWarningThreshold);
+         bool autopilotDisengagement(const bool pilotAndCopilotChecklistComplete);
+         void increaseAltitude(const float requireAltitude);
      };
 
-     void accelerateForTakeOff(float groundSpeed, bool armDoorsAndCrossCheck, bool runWayClear, bool airspaceClear);
-     void increaseGroundSpeed(float windSpeed);
-     void transportPeople(int totalPassengers, int totalCrew);
-     void provideInflightEntertainment(int passengerSeatNumber, std::string mediaSelction);
+     void accelerateForTakeOff(const float groundSpeed, const bool armDoorsAndCrossCheck, const bool runWayClear, const bool airspaceClear);
+     void increaseGroundSpeed(float windSpeed) const;
+     void transportPeople(const int totalPassengers, const int totalCrew) const;
+     void provideInflightEntertainment(const int passengerSeatNumber, const std::string mediaSelction) const;
      JUCE_LEAK_DETECTOR(CommercialAeroplane)
  };
 
@@ -297,17 +297,17 @@
      std::cout << "\nCockpit being destructed!" << std::endl;
  }
 
- void CommercialAeroplane::Cockpit::printProximityAlarm()
+ void CommercialAeroplane::Cockpit::printProximityAlarm() const
  {
      std::cout << "You are within " << this->proximityWarningThreshold << " metres of the ground!" << std::endl;
  }
 
- float CommercialAeroplane::Cockpit::increaseAirSpeed(float deltaV, float currentAirSpeed)
+ float CommercialAeroplane::Cockpit::increaseAirSpeed(float deltaV, float currentAirSpeed) const
  {
      return deltaV + currentAirSpeed;
  }
 
- bool CommercialAeroplane::Cockpit::groundProximityWarningAlarm(bool nearGround, float distFromGround)
+ bool CommercialAeroplane::Cockpit::groundProximityWarningAlarm(const bool nearGround, const float distFromGround)
  {
      if(nearGround == true && distFromGround < proximityWarningThreshold)
      {
@@ -321,7 +321,7 @@
      return groundProximityalarmStateOn;
  }
 
- bool CommercialAeroplane::Cockpit::autopilotDisengagement(bool pilotAndCopilotChecklistComplete)
+ bool CommercialAeroplane::Cockpit::autopilotDisengagement(const bool pilotAndCopilotChecklistComplete)
  {
      std::cout << "Autopilot currently engaged?: " << autoPilotLightOn << std::endl;
      if (pilotAndCopilotChecklistComplete)
@@ -338,7 +338,7 @@
      return autoPilotLightOn;
  }
 
- void CommercialAeroplane::Cockpit::increaseAltitude(float requireAltitude)
+ void CommercialAeroplane::Cockpit::increaseAltitude(const float requireAltitude)
  {
      while (altitude < requireAltitude)
      {
@@ -347,7 +347,7 @@
      std::cout << "New altitude of " << altitude << "ft achieved" << std::endl;
  }
 
- void CommercialAeroplane::accelerateForTakeOff(float groundSpeed, bool armDoorsAndCrossCheck, bool runWayClear, bool airspaceClear)
+ void CommercialAeroplane::accelerateForTakeOff(const float groundSpeed, const bool armDoorsAndCrossCheck, const bool runWayClear, const bool airspaceClear)
  {
      if (runWayClear && armDoorsAndCrossCheck && airspaceClear)
      {
@@ -360,7 +360,7 @@
      }
  }
 
- void CommercialAeroplane::increaseGroundSpeed(float windSpeed)
+ void CommercialAeroplane::increaseGroundSpeed(const float windSpeed) const
  {
      float currentGroundSpeed {0.0f};
      while (currentGroundSpeed < speedRequiredForTakeOff - windSpeed)
@@ -370,12 +370,12 @@
      std::cout << "Speed for take off achieved... Take Off" << std::endl;
  }
 
- void CommercialAeroplane::transportPeople(int totalPassengers, int totalCrew)
+ void CommercialAeroplane::transportPeople(const int totalPassengers, const int totalCrew) const
  {
      std::cout << "Total number on board: " << totalPassengers + totalCrew << std::endl;
  }
 
- void CommercialAeroplane::provideInflightEntertainment(int passengerSeatNumber, std::string mediaSelction)
+ void CommercialAeroplane::provideInflightEntertainment(const int passengerSeatNumber, const std::string mediaSelction) const
  {
      std::cout << "Passenger " << passengerSeatNumber << " selected " << mediaSelction << std::endl;
  }
@@ -405,11 +405,11 @@
      Farm();
      ~Farm();
 
-     void printFarmExpenses();
-     float sellSheep(float priceOfSheep);
-     double harvestCrop(bool isCropMature, int numFarmHands, bool machinesFueled, double priceOfCrop);
-     void constructNewBarn(bool needNewBarn, float newConstructionBudget);
-     void milkCows(int totalVolumeOfMilkNeeded, float volumeOfMilkAlreadyInTanks, float priceOfMilk);
+     void printFarmExpenses() const;
+     float sellSheep(const float priceOfSheep) const;
+     double harvestCrop(const bool isCropMature, const int numFarmHands, const bool machinesFueled, const double priceOfCrop);
+     void constructNewBarn(const bool needNewBarn, const float newConstructionBudget);
+     void milkCows(const int totalVolumeOfMilkNeeded, float volumeOfMilkAlreadyInTanks, const float priceOfMilk) const;
      JUCE_LEAK_DETECTOR(Farm)
  };
 
@@ -421,19 +421,19 @@
  {
     std::cout << "\nFarm being destructed!" << std::endl;
  }
- void Farm::printFarmExpenses()
+ void Farm::printFarmExpenses() const
  {
      std::cout << "The farm has spent £" << this->annualExpenses << " this year. It's remaining profit is £" << this->annualProfit <<  "." << std::endl;
  }
 
- float Farm::sellSheep(float priceOfSheep)
+ float Farm::sellSheep(const float priceOfSheep) const
  {
      float sheepSale = priceOfSheep * numSheep;
      std::cout << "The farm made £" << sheepSale << " from the sale of " << numSheep << " sheep!" << std::endl;
      return sheepSale;
  }
 
- double Farm::harvestCrop(bool isCropMature, int numFarmHands, bool machinesFueled, double priceOfCrop)
+ double Farm::harvestCrop(const bool isCropMature, const int numFarmHands, const bool machinesFueled, const double priceOfCrop)
  {
      if (isCropMature && machinesFueled)
      {
@@ -443,7 +443,7 @@
      return 0;
  }
 
- void Farm::constructNewBarn(bool needNewBarn, float newConstructionBudget)
+ void Farm::constructNewBarn(const bool needNewBarn, const float newConstructionBudget)
  {
      std::cout << "The farm has " << numSheep << " sheep, " << numCows << " cows, " << "and a crop yield of " << cropYield << "." << std::endl;
      if (needNewBarn)
@@ -452,7 +452,7 @@
          annualProfit -= newConstructionBudget;
      }
  }
- void Farm::milkCows(int totalVolumeOfMilkNeeded, float volumeOfMilkAlreadyInTanks, float priceOfMilk)
+ void Farm::milkCows(const int totalVolumeOfMilkNeeded, float volumeOfMilkAlreadyInTanks, const float priceOfMilk) const
  {
      while (volumeOfMilkAlreadyInTanks < totalVolumeOfMilkNeeded)
      {
@@ -482,8 +482,8 @@
      Farm farm;
      Town();
      ~Town();
-     float collectTaxes(float taxRate);
-     void controlAnimalDiseaseOutbreak(std::string diseaseName, float percenatgeInfected);
+     float collectTaxes(const float taxRate);
+     void controlAnimalDiseaseOutbreak(const std::string diseaseName, const float percenatgeInfected) const;
      JUCE_LEAK_DETECTOR(Town)
  };
 
@@ -496,7 +496,7 @@
     std::cout << "\nTown being destructed!" << std::endl;
  }
 
- float Town::collectTaxes(float taxRate)
+ float Town::collectTaxes(const float taxRate)
  {
      float councilTaxIncome {0.0f};
      float coffeeShopTax = coffeeShop.annualProfit * taxRate;
@@ -515,7 +515,7 @@
      return councilTaxIncome;
  }
 
- void Town::controlAnimalDiseaseOutbreak(std::string diseaseName, float percenatgeInfected)
+ void Town::controlAnimalDiseaseOutbreak(const std::string diseaseName, const float percenatgeInfected) const
  {
      std::cout << "There has been an outbreak of " << diseaseName << ". The town authority needs to cull " << percenatgeInfected << "% of the farm's sheep & cows."<< std::endl;
      int numSheepToCull = int(farm.numSheep * percenatgeInfected / 100);
@@ -543,7 +543,7 @@
      Airport();
      ~Airport();
      int collectGroundRent();
-     void guideAeroplaneToGate(int gateNumber, bool followMeCar);
+     void guideAeroplaneToGate(const int gateNumber, const bool followMeCar) const;
      JUCE_LEAK_DETECTOR(Airport)
  };
 
@@ -563,7 +563,7 @@
      return groundRent;
  }
 
- void Airport::guideAeroplaneToGate(int gateNumber, bool followMeCar)
+ void Airport::guideAeroplaneToGate(const int gateNumber, const bool followMeCar) const
  {
      if (followMeCar)
      {
