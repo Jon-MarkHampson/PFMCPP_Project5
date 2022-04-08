@@ -118,7 +118,7 @@
      void printIncomeFromArt() const;
      float hostLocalArtistOnWalls(float percenatgeCommissionAgreed, float totalArtSales, std::string name) const;
      float chargeCustomer(const int numberOfCoffees, const std::string customerName) const;
-     bool trainStaff(Employee& employee, const std::string trainingRequired) const;
+     bool trainStaff(const Employee& employee, const std::string trainingRequired) const;
      float addDailyTakingsToAnnualProfit(int numCoffeesSold, float totalFromAdditionalSales);
      JUCE_LEAK_DETECTOR(CoffeeShop)
  };
@@ -205,7 +205,7 @@
      return saleTotal;
  }
 
- bool CoffeeShop::trainStaff(Employee& employee, std::string trainingRequired) const
+ bool CoffeeShop::trainStaff(const Employee& employee, const std::string trainingRequired) const
  {
      std::cout << employee.firstName << " " << employee.lastName << " has been trained on " << trainingRequired << std::endl;
      return true;
