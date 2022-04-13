@@ -47,7 +47,7 @@ bool CoffeeShop::Employee::deservesPromotion()
         salary += 1000;
         return true;
     }
-return false;
+    return false;
 }
 
 void CoffeeShop::Employee::takeOutTrash(const int& bagsOfTrash, const int& numBagsEmployeeCanCarry) const
